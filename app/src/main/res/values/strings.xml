@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dagger</string>
+    <string name="app_name">DaggerSample</string>
     <string name="username">Username</string>
     <string name="welcome_dagger">Welcome to Dagger World!</string>
     <string name="password">Password</string>

@@ -1,9 +1,11 @@
 package com.sgjk.daggersample.register
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sgjk.daggersample.MyApplication
 import com.sgjk.daggersample.R
+import com.sgjk.daggersample.main.MainActivity
 import com.sgjk.daggersample.register.fragment.EnterDetailsFragment
 import com.sgjk.daggersample.register.fragment.TermsAndConditionsFragment
 
@@ -32,7 +34,8 @@ class RegisterActivity : AppCompatActivity(){
 
     fun onTermsAndConditionsAccepted(){
         registerModel.registerUser()
-        //TODO 进入主页
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     override fun onBackPressed() {

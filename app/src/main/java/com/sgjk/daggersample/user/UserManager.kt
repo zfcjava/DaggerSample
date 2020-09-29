@@ -37,8 +37,18 @@ class UserManager(private val storage: Storage){
         userDataRepository = null
     }
 
+    fun unregister(){
+        storage.setString(REGISTERED_USER, "")
+        storage.setString("$userName$USER_SUFFIX", "")
+        logout()
+    }
+
     private fun userJustLogin(){
         userDataRepository = UserDataRepository(this)
+    }
+
+    fun isUserLoggedIn(): Boolean {
+        return userDataRepository != null
     }
 
 }
