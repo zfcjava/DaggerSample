@@ -1,8 +1,9 @@
 package com.sgjk.daggersample.register
 
 import com.sgjk.daggersample.user.UserManager
+import javax.inject.Inject
 
-class RegisterModel(val userManager: UserManager) {
+class RegisterModel @Inject constructor(val userManager: UserManager) {
 
     private var username: String? = null
     private var password: String? = null

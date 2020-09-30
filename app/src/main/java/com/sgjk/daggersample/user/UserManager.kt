@@ -1,13 +1,14 @@
 package com.sgjk.daggersample.user
 
 import com.sgjk.daggersample.storage.Storage
+import javax.inject.Inject
 
 //定义两个常量
 
 private const val REGISTERED_USER = "registered_user"
 private const val USER_SUFFIX = "user_suffix"
 
-class UserManager(private val storage: Storage){
+class UserManager @Inject constructor(private val storage: Storage){
 
     var userDataRepository: UserDataRepository? = null
 

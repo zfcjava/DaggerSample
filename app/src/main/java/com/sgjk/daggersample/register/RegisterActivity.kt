@@ -1,5 +1,6 @@
 package com.sgjk.daggersample.register
 
+import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,16 +9,19 @@ import com.sgjk.daggersample.R
 import com.sgjk.daggersample.main.MainActivity
 import com.sgjk.daggersample.register.fragment.EnterDetailsFragment
 import com.sgjk.daggersample.register.fragment.TermsAndConditionsFragment
+import javax.inject.Inject
 
 class RegisterActivity : AppCompatActivity(){
 
+    @Inject
     lateinit var registerModel: RegisterModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        (application as MyApplication).appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-
-        registerModel = RegisterModel(((application) as MyApplication).userManager)
 
         //添加一个fragment到Activity中
         supportFragmentManager.beginTransaction()
