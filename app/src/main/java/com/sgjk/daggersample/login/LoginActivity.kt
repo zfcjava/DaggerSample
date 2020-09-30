@@ -19,12 +19,15 @@ class LoginActivity: AppCompatActivity() {
 
     @Inject
     lateinit var loginModel: LoginModel
+
     lateinit var errorTextView: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (application as MyApplication).appComponent.inject(this)
+
+        (application as MyApplication).appComponent.loginComponent().create().inject(this)
+
         setContentView(R.layout.activity_login)
 
         loginModel.loginState.observe(this, Observer<LoginState> { state ->

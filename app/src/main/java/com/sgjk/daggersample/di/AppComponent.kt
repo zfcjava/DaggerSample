@@ -26,12 +26,12 @@ interface AppComponent {
     //TODO 看看这个东西给谁用？ App吗
     fun registerComponent():RegisterComponent.factory
 
+    fun loginComponent():LoginComponent.factory
+
     //为MainActivity提供注册
     fun inject(activity: MainActivity)
 
     //为设置提供注册
     fun inject(activity: SettingsActivity)
 
-    //为登录提供注册
-    fun inject(activity: LoginActivity)
 }
