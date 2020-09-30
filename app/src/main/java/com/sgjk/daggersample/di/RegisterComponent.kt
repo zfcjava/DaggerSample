@@ -3,9 +3,11 @@ package com.sgjk.daggersample.di
 import com.sgjk.daggersample.register.RegisterActivity
 import com.sgjk.daggersample.register.fragment.EnterDetailsFragment
 import com.sgjk.daggersample.register.fragment.TermsAndConditionsFragment
+import com.sgjk.daggersample.scope.ActivityScope
 import dagger.Subcomponent
 
 //子Component需要关联AppComponent
+@ActivityScope
 @Subcomponent
 interface RegisterComponent {
 

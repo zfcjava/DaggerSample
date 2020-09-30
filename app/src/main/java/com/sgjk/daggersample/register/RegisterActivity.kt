@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sgjk.daggersample.MyApplication
 import com.sgjk.daggersample.R
+import com.sgjk.daggersample.di.RegisterComponent
 import com.sgjk.daggersample.main.MainActivity
 import com.sgjk.daggersample.register.fragment.EnterDetailsFragment
 import com.sgjk.daggersample.register.fragment.TermsAndConditionsFragment
@@ -16,9 +17,13 @@ class RegisterActivity : AppCompatActivity(){
     @Inject
     lateinit var registerModel: RegisterModel
 
+    // Stores an instance of RegistrationComponent so that its Fragments can access it
+    lateinit var registerComponent: RegisterComponent
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        (application as MyApplication).appComponent.registerComponent().create().inject(this)
+        registerComponent = (application as MyApplication).appComponent.registerComponent().create();
+        registerComponent.inject(this)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)

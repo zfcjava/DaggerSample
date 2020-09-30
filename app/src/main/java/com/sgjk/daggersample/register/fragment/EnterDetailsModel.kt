@@ -2,10 +2,12 @@ package com.sgjk.daggersample.register.fragment
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.sgjk.daggersample.scope.ActivityScope
 import javax.inject.Inject
 
 private const val MAX_LENGTH = 5
-
+//TODO 这里需要吗
+@ActivityScope
 class EnterDetailsModel @Inject constructor(){
 
     private val _enterUserState = MutableLiveData<EnterDetailsViewState>()

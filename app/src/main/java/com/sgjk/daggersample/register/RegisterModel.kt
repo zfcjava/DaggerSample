@@ -1,11 +1,13 @@
 package com.sgjk.daggersample.register
 
 import android.util.Log
+import com.sgjk.daggersample.scope.ActivityScope
 import com.sgjk.daggersample.user.UserManager
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
+// Scopes this ViewModel to components that use @ActivityScope
+//限制 使用该Model的必须在使用ActivityScope的容器中
+@ActivityScope
 class RegisterModel @Inject constructor(val userManager: UserManager) {
 
     init {

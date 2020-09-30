@@ -32,10 +32,8 @@ class EnterDetailsFragment : Fragment(){
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (((activity) as RegisterActivity).application as MyApplication)
-            .appComponent
-            .registerComponent()
-            .create()
+        ((activity) as RegisterActivity)
+            .registerComponent
             .inject(this)
     }
 
