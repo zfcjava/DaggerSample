@@ -3,6 +3,8 @@ package com.sgjk.daggersample.di
 import android.content.Context
 import com.sgjk.daggersample.main.MainActivity
 import com.sgjk.daggersample.register.RegisterActivity
+import com.sgjk.daggersample.register.fragment.EnterDetailsFragment
+import com.sgjk.daggersample.register.fragment.TermsAndConditionsFragment
 import com.sgjk.daggersample.storage.StorageModule
 import dagger.BindsInstance
 import dagger.Component
@@ -23,4 +25,8 @@ interface AppComponent {
 
     //为MainActivity提供注册
     fun inject(activity: MainActivity)
+
+    fun inject(fragment: EnterDetailsFragment)
+
+    fun inject(fragment: TermsAndConditionsFragment)
 }

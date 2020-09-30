@@ -1,5 +1,6 @@
 package com.sgjk.daggersample.register.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,19 +11,29 @@ import android.widget.TextView
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.sgjk.daggersample.MyApplication
 import com.sgjk.daggersample.R
 import com.sgjk.daggersample.register.RegisterActivity
 import com.sgjk.daggersample.register.RegisterModel
+import javax.inject.Inject
 
 class EnterDetailsFragment : Fragment(){
 
-    private lateinit var registerModel: RegisterModel
-    private lateinit var enterDetailsModel:EnterDetailsModel
+    @Inject
+    lateinit var registerModel: RegisterModel
+
+    @Inject
+    lateinit var enterDetailsModel:EnterDetailsModel
 
 
     private lateinit var errorTextView: TextView
     private lateinit var usernameEditText: EditText
     private lateinit var passwordEditText: EditText
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (((activity) as RegisterActivity).application as MyApplication).appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,9 +41,6 @@ class EnterDetailsFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_enter_details, container, false)
-
-        registerModel = (activity as RegisterActivity).registerModel
-        enterDetailsModel = EnterDetailsModel()
 
         //注册观察者
         enterDetailsModel.enterUserState.observe(this,Observer<EnterDetailsViewState>{

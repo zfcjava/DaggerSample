@@ -1,9 +1,16 @@
 package com.sgjk.daggersample.register
 
+import android.util.Log
 import com.sgjk.daggersample.user.UserManager
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class RegisterModel @Inject constructor(val userManager: UserManager) {
+
+    init {
+        Log.e("zfccc", "RegisterModel init")
+    }
 
     private var username: String? = null
     private var password: String? = null
