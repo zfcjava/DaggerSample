@@ -13,19 +13,19 @@ import com.sgjk.daggersample.MyApplication
 import com.sgjk.daggersample.R
 import com.sgjk.daggersample.main.MainActivity
 import com.sgjk.daggersample.register.RegisterActivity
+import javax.inject.Inject
 
 class LoginActivity: AppCompatActivity() {
 
-    private lateinit var loginModel: LoginModel
-
+    @Inject
+    lateinit var loginModel: LoginModel
     lateinit var errorTextView: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        (application as MyApplication).appComponent.inject(this)
         setContentView(R.layout.activity_login)
-
-        loginModel = LoginModel((application as MyApplication).userManager)
 
         loginModel.loginState.observe(this, Observer<LoginState> { state ->
             when (state) {

@@ -18,11 +18,16 @@ package com.sgjk.daggersample.settings
 
 import com.sgjk.daggersample.user.UserDataRepository
 import com.sgjk.daggersample.user.UserManager
+import javax.inject.Inject
 
 /**
  * SettingsViewModel is the ViewModel that [SettingsActivity] uses to handle complex logic.
  */
-class SettingsViewModel(
+
+import javax.inject.Singleton
+
+@Singleton
+class SettingsViewModel @Inject constructor(
     private val userDataRepository: UserDataRepository,
     private val userManager: UserManager
 ) {

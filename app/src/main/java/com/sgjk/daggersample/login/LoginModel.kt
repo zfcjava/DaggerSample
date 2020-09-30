@@ -4,8 +4,12 @@ package com.sgjk.daggersample.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.sgjk.daggersample.user.UserManager
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class LoginModel(val userManager: UserManager){
+
+@Singleton
+class LoginModel @Inject constructor(val userManager: UserManager){
 
     private var _loginState = MutableLiveData<LoginState>()
 

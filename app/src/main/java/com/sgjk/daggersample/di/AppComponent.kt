@@ -1,10 +1,12 @@
 package com.sgjk.daggersample.di
 
 import android.content.Context
+import com.sgjk.daggersample.login.LoginActivity
 import com.sgjk.daggersample.main.MainActivity
 import com.sgjk.daggersample.register.RegisterActivity
 import com.sgjk.daggersample.register.fragment.EnterDetailsFragment
 import com.sgjk.daggersample.register.fragment.TermsAndConditionsFragment
+import com.sgjk.daggersample.settings.SettingsActivity
 import com.sgjk.daggersample.storage.StorageModule
 import dagger.BindsInstance
 import dagger.Component
@@ -29,4 +31,10 @@ interface AppComponent {
     fun inject(fragment: EnterDetailsFragment)
 
     fun inject(fragment: TermsAndConditionsFragment)
+
+    //为设置提供注册
+    fun inject(activity: SettingsActivity)
+
+    //为登录提供注册
+    fun inject(activity: LoginActivity)
 }
