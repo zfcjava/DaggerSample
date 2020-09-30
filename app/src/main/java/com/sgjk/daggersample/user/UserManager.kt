@@ -2,12 +2,15 @@ package com.sgjk.daggersample.user
 
 import com.sgjk.daggersample.storage.Storage
 import javax.inject.Inject
+import javax.inject.Singleton
 
 //定义两个常量
 
 private const val REGISTERED_USER = "registered_user"
 private const val USER_SUFFIX = "user_suffix"
 
+//因为UserManager只使用了一个
+@Singleton
 class UserManager @Inject constructor(private val storage: Storage){
 
     var userDataRepository: UserDataRepository? = null
