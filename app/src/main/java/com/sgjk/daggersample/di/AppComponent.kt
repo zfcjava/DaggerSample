@@ -14,7 +14,7 @@ import javax.inject.Singleton
 
 //这是一个全局的声明周期 组件（容器）
 @Singleton
-@Component(modules = [StorageModule::class])
+@Component(modules = [StorageModule::class,AppSubComponents::class])
 interface AppComponent {
 
     @Component.Factory
@@ -22,15 +22,12 @@ interface AppComponent {
         fun create(@BindsInstance context: Context):AppComponent
     }
 
-    //为register提供注册
-    fun inject(activity: RegisterActivity)
+    //暴露 图中RegisterComponent.factory工厂方法
+    //TODO 看看这个东西给谁用？ App吗
+    fun registerComponent():RegisterComponent.factory
 
     //为MainActivity提供注册
     fun inject(activity: MainActivity)
-
-    fun inject(fragment: EnterDetailsFragment)
-
-    fun inject(fragment: TermsAndConditionsFragment)
 
     //为设置提供注册
     fun inject(activity: SettingsActivity)
