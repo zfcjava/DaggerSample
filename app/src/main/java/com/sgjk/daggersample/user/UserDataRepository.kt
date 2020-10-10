@@ -16,12 +16,16 @@
 
 package com.sgjk.daggersample.user
 
+import android.util.Log
+import com.sgjk.daggersample.scope.LoggedUserScope
 import javax.inject.Inject
+import javax.inject.Singleton
 import kotlin.random.Random
 
 /**
  * UserDataRepository contains user-specific data such as username and unread notifications.
  */
+@LoggedUserScope
 class UserDataRepository @Inject constructor(private val userManager: UserManager) {
 
     val username: String
@@ -31,6 +35,7 @@ class UserDataRepository @Inject constructor(private val userManager: UserManage
 
     init {
         unreadNotifications = randomInt()
+        Log.e("zfc", "UserDataRepository init111")
     }
 
     fun refreshUnreadNotifications() {

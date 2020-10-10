@@ -34,8 +34,7 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var mainViewModel: MainViewModel
 
-    @Inject
-    lateinit var userManager: UserManager
+
 
     /**
      * If the User is not registered, RegistrationActivity will be launched,
@@ -43,7 +42,12 @@ class MainActivity : AppCompatActivity() {
      * else carry on with MainActivity
      */
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as MyApplication).appComponent.inject(this)
+//        (application as MyApplication).appComponent
+//            .userComponent()
+//            .create()
+//            .inject(this)
+        val userManager = (application as MyApplication).appComponent.userManager()
+        userManager.userComponent?.inject(this)
         super.onCreate(savedInstanceState)
         if (!userManager.isUserLoggedIn()) {
             if (!userManager.isUserRegistered()) {

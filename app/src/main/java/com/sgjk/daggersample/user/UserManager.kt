@@ -1,5 +1,7 @@
 package com.sgjk.daggersample.user
 
+import android.util.Log
+import com.sgjk.daggersample.di.UserComponent
 import com.sgjk.daggersample.storage.Storage
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -11,13 +13,18 @@ private const val USER_SUFFIX = "user_suffix"
 
 //因为UserManager只使用了一个
 @Singleton
-class UserManager @Inject constructor(private val storage: Storage){
+class UserManager @Inject constructor(private val storage: Storage, private val userComponentFactory: UserComponent.Factory){
 
-    var userDataRepository: UserDataRepository? = null
+    var userComponent: UserComponent? = null
+        private set
 
     val userName: String
         get() = storage.getString(REGISTERED_USER)
 
+
+    init {
+        Log.e("zfc", "UserManager init111")
+    }
 
     fun isUserRegistered() = storage.getString(REGISTERED_USER).isNotEmpty()
 
@@ -38,7 +45,7 @@ class UserManager @Inject constructor(private val storage: Storage){
 
 
     fun logout() {
-        userDataRepository = null
+        userComponent = null
     }
 
     fun unregister(){
@@ -48,11 +55,11 @@ class UserManager @Inject constructor(private val storage: Storage){
     }
 
     private fun userJustLogin(){
-        userDataRepository = UserDataRepository(this)
+        userComponent = userComponentFactory.create()
     }
 
     fun isUserLoggedIn(): Boolean {
-        return userDataRepository != null
+        return userComponent != null
     }
 
 }

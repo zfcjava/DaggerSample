@@ -8,6 +8,7 @@ import com.sgjk.daggersample.register.fragment.EnterDetailsFragment
 import com.sgjk.daggersample.register.fragment.TermsAndConditionsFragment
 import com.sgjk.daggersample.settings.SettingsActivity
 import com.sgjk.daggersample.storage.StorageModule
+import com.sgjk.daggersample.user.UserManager
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -27,11 +28,9 @@ interface AppComponent {
     fun registerComponent():RegisterComponent.factory
 
     fun loginComponent():LoginComponent.factory
+    //错误使用
+//    fun userComponent():UserComponent.Factory
 
-    //为MainActivity提供注册
-    fun inject(activity: MainActivity)
-
-    //为设置提供注册
-    fun inject(activity: SettingsActivity)
+    fun userManager(): UserManager
 
 }

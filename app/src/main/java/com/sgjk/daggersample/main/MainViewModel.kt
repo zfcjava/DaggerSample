@@ -15,6 +15,7 @@
  */
 package com.sgjk.daggersample.main
 
+import com.sgjk.daggersample.scope.LoggedUserScope
 import com.sgjk.daggersample.user.UserDataRepository
 import javax.inject.Inject
 
